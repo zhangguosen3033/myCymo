@@ -1,0 +1,53 @@
+px2rem( $px )
+  $px/(750/10)rem
+
+$red = #fe9f28
+$gray = #b2b2b2
+$black = #323232
+
+
+
+bg-image($url)
+  background-image: url($url + "@2x.png")
+  background-repeat: no-repeat
+  @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
+    background-image: url($url + "@3x.png")
+
+borderTop($color)
+  position: relative
+  &:before
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    border-top: 1px solid $color
+    content: ' '
+    @media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)
+      -webkit-transform: scaleY(0.7)
+      transform: scaleY(0.7)
+    @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2)
+      -webkit-transform: scaleY(0.5)
+      transform: scaleY(0.5)
+    @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
+      -webkit-transform: scaleY(0.3)
+      transform: scaleY(0.3)
+borderBottom($color)
+  position: relative
+  &:after
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    border-top: 1px solid $color
+    content: ' '
+    @media (-webkit-min-device-pixel-ratio: 1.5),(min-device-pixel-ratio: 1.5)
+      -webkit-transform: scaleY(0.7)
+      transform: scaleY(0.7)
+    @media (-webkit-min-device-pixel-ratio: 2),(min-device-pixel-ratio: 2)
+      -webkit-transform: scaleY(0.5)
+      transform: scaleY(0.5)
+    @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
+      -webkit-transform: scaleY(0.3)
+      transform: scaleY(0.3)
