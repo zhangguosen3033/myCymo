@@ -4,12 +4,12 @@
 
 
        <div class="loanBox">
-         <!-- <div class="item" v-for="(item,index) in selectContentData" :class="{'item2':index == '1','item3':index == '2'}" :key="">
+         <div class="item" v-for="(item,index) in selectContentData" :class="{'item2':index == '1','item3':index == '2'}" :key="">
            <span class="tag">{{item.productType}}</span>
             <p class="font1">月利率</p>
             <p class="font2">{{item.rate}}<span>%</span></p>
             <p class="font3">{{item.loanNumbers}}人已放款</p>
-         </div> -->
+         </div>
        </div>
 
 
@@ -60,17 +60,15 @@ export default {
 
 	},
   mounted() {
-    This.getHeaderHotData()
+    // This.getHeaderHotData()
+    getHotProduct(null, res => {
+      if(res.status == '200'){
+        this.selectContentData = res.data;
+      }
+    })
   },
   methods: {
-    getHeaderHotData() {
-      getHotProduct(null, res => {
-        console.log(res,'res')
-        if(res.status == '200'){
-  			  this.selectContentData = res.data;
-        }
-      })
-    }
+
   }
 }
 </script>
@@ -83,7 +81,7 @@ export default {
     .hotTitle
         background-color: #f0f0f0
         width: 100%
-        height: px2rem(105)
+        height: px2rem(70)
         font-size: px2rem(30)
         font-weight: bold
         text-align: center
@@ -123,7 +121,50 @@ export default {
 
     .loanBox
         background-color: #ffffff;
-        height: px2rem(220)
+        height: px2rem(180)
+        display: flex
+        flex-direction: row
+        padding: px2rem(35) px2rem(20)
+        .item
+            flex: 1
+            position: relative
+            margin-right: px2rem(10)
+            margin-left: px2rem(10)
+            bg-image('../../assets/images/xinyong')
+            background-size: 100% 100%
+            .tag
+                position: absolute
+                left: px2rem(3)
+                top: px2rem(13)
+                font-size: px2rem(18)
+                color: #ffffff
+                transform:rotate(-50deg)
+            .font1
+                margin-top: px2rem(25)
+                font-size: px2rem(22)
+                color:rgba(255,255,255,0.7)
+            .font2
+                 margin-top: px2rem(10)
+                 font-size: px2rem(34)
+                 color: #ffffff
+                 span
+                    font-size:px2rem(20)
+            .font3
+                  margin-top: px2rem(10)
+                  font-size: px2rem(20)
+                  color:rgba(255,255,255,0.7)
+
+        .item2
+            bg-image('../../assets/images/diya')
+            background-size: 100% 100%
+        .item3
+            bg-image('../../assets/images/yongxu')
+            background-size: 100% 100%
+
+
+
+
+
 
     .aboutUS
         .aboutList
@@ -172,10 +213,10 @@ export default {
                         background-size: 100% 100%
 
     .logo
-        height: px2rem(115)
+        height: px2rem(100)
         background-color: #f0f0f0
         bg-image('../../assets/images/房金云logo')
         background-size: px2rem(200)
-        background-position: center top px2rem(35)
+        background-position: center top px2rem(25)
 
 </style>

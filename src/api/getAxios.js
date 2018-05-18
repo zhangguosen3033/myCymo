@@ -16,7 +16,6 @@ axios.interceptors.request.use(function(request) {
   //请求错误时做些事
   return Promise.reject(error);
 });
-
 const getAxios = (url, params, callback, method, errFuc) => {
   if (method === 'post') {
     return axios[method](url, params)
