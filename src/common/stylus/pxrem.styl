@@ -51,3 +51,44 @@ borderBottom($color)
     @media (-webkit-min-device-pixel-ratio: 3),(min-device-pixel-ratio: 3)
       -webkit-transform: scaleY(0.3)
       transform: scaleY(0.3)
+
+
+
+
+.rangeclass
+  padding:px2rem(30) 0 px2rem(30) 0
+  .vux-range-input-box
+    margin:0 px2rem(80) !important
+  .range-bar
+    background-color:#f0f0f0
+    height:px2rem(10) !important
+    border-radius:px2rem(5)
+  .range-quantity
+    background-color:#ffa414
+  .range-handle
+    top:px2rem(-30) !important
+    width: px2rem(58)
+    height: px2rem(58)
+    border:transparent solid px2rem(5)
+    background:transparent
+    box-shadow:none
+    &:after
+      content :''
+      position: absolute
+      top: px2rem(13)
+      left: px2rem(-5)
+      width:px2rem(26)
+      height:px2rem(26)
+      border:#ffb323 solid px2rem(5)
+      background:#fff
+      border-radius:50%
+  .range-min
+    top:px2rem(-30)
+    left:px2rem(-10)
+    font-size:px2rem(24)
+    color: #999
+  .range-max
+    top:px2rem(-30)
+    right:px2rem(0)
+    font-size:px2rem(24)
+    color: #999

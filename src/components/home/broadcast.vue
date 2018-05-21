@@ -8,17 +8,7 @@
   <p>
     <span>{{rangeValue}}</span>万
   </p>
-
-  <mt-range v-model="rangeValue"
- :min="1"
- :max="1000"
- :step="10"
- :bar-height="5"
- class="range">
-  <div slot="start" class="start">1</div>
-  <div slot="end" class="end">1000</div>
-</mt-range>
-
+  <Range :step="10" v-model="rangeValue" :min="1" :max="1000" class="rangeclass" ></Range>
    <div class="apply" @click ='goApply' >
       立即申请
    </div>
@@ -47,8 +37,16 @@
 import {
 getHomeProductCfg,
 } from '../../api/productApi.js'
+import {
+	Marquee,
+	MarqueeItem,
+	Range
+} from 'vux'
 export default {
   components: {
+    Marquee,
+    MarqueeItem,
+    Range,
 	},
 	data() {
 		return {
@@ -104,14 +102,7 @@ export default {
           font-weight: bold
           color: #ff7f5b
           margin-right: px2rem(15)
-      .range
-        color: #f0f0f0
-        .start
-            font-size: px2rem(24)
-            color: #999
-        .end
-            font-size: px2rem(24)
-            color: #999
+  
 
       .apply
           margin-top: px2rem(46)

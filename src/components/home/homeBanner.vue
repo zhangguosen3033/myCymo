@@ -1,17 +1,27 @@
 <template>
-    <mt-swipe :auto="2000"class="swipe">
-      <mt-swipe-item v-for="(item,index) in bannaerData" :key="index" class="item">
+    <swiper   loop auto
+              :show-desc-mask="false"
+              :aspect-ratio="0.4"
+              dots-position="center"
+              :index="swiperIndex" class="swipe">
+      <swiper-item v-for="(item,index) in bannaerData" :key="index" class="item">
         <img :src="item.bannerImgUrl"  @click='jumpPage(item.bannerJumpUrl)'>
-      </mt-swipe-item>
-    </mt-swipe>
+      </swiper-item>
+    </swiper>
 </template>
 
 <script>
 import {
 getBannerConfig,
 } from '../../api/productApi.js'
+import {
+  Swiper,
+	SwiperItem,
+} from 'vux'
 export default {
   components: {
+    Swiper,
+    SwiperItem,
 	},
 	data() {
 		return {

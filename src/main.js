@@ -6,21 +6,19 @@ import router from './router'
 
 import Vuex from 'vuex'
 import {
-  Toast,
-  Swipe,
-  SwipeItem,
-  Range
-} from 'mint-ui'
-import 'mint-ui/lib/style.css'
+  AlertPlugin,
+  ToastPlugin,
+  ConfirmPlugin,
+  LoadingPlugin
+} from 'vux'
+
 Vue.config.productionTip = false
 
 Vue.use(Vuex)
-
-Vue.component(Toast.name, Toast)
-window.Toast = Toast;
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
-Vue.component(Range.name, Range);
+Vue.use(AlertPlugin)
+Vue.use(ToastPlugin)
+Vue.use(ConfirmPlugin)
+Vue.use(LoadingPlugin)
 
 // 设置路由跳转
 Vue.prototype.$goRoute = function(index) {
@@ -35,3 +33,4 @@ new Vue({
   },
   template: '<App/>'
 })
+export default that;
