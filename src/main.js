@@ -6,7 +6,9 @@ import router from './router'
 
 import Vuex from 'vuex'
 import {
-  Toast
+  Toast,
+  Swipe,
+  SwipeItem
 } from 'mint-ui'
 import 'mint-ui/lib/style.css'
 
@@ -16,6 +18,8 @@ Vue.use(Vuex)
 
 Vue.component(Toast.name, Toast)
 window.Toast = Toast;
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
 
 // 设置路由跳转
 Vue.prototype.$goRoute = function(index) {

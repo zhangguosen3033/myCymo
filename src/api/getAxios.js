@@ -1,7 +1,4 @@
 import axios from 'axios'
-import {
-  Toast
-} from 'mint-ui';
 
 axios.defaults.headers.common['Authorization'] = process.env.API_TOKEN;
 axios.defaults.baseURL = process.env.API_ROOT;

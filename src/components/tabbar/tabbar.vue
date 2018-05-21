@@ -37,7 +37,8 @@
             bottom: 0
             display: flex
             flex-direction: row
-            // background-color: red
+            background-color: rgba(255, 255, 255, 1);
+            // 设置tabbar不透明
             borderTop(#e6e6e6)
             a
                 height: 100%
