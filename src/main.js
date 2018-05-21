@@ -8,10 +8,10 @@ import Vuex from 'vuex'
 import {
   Toast,
   Swipe,
-  SwipeItem
+  SwipeItem,
+  Range
 } from 'mint-ui'
 import 'mint-ui/lib/style.css'
-
 Vue.config.productionTip = false
 
 Vue.use(Vuex)
@@ -20,6 +20,7 @@ Vue.component(Toast.name, Toast)
 window.Toast = Toast;
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Range.name, Range);
 
 // 设置路由跳转
 Vue.prototype.$goRoute = function(index) {
