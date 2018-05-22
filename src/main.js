@@ -33,4 +33,3 @@ new Vue({
   },
   template: '<App/>'
 })
-export default that;

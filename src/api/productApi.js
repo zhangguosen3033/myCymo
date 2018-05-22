@@ -3,6 +3,7 @@ import getAxios from './getAxios.js';
 
 let productBaseUrl = 'prometheus-backend';
 let parisBaseUrl = 'paris-backend';
+let crmBaseUrl = 'thea-backend';
 
 //热销产品接口
 export function getHotProduct(params, callback) {
@@ -17,4 +18,9 @@ export function getBannerConfig(params, callback) {
 //首页产品'立即申请'Banner配置
 export function getHomeProductCfg(params, callback) {
   getAxios(productBaseUrl + '/apiwithout/v1/queryLoanApplyCfg', params, callback, 'get')
+};
+
+//首页文字滚动轮播
+export function getHomeScrollData(params, callback) {
+  getAxios(crmBaseUrl + '/apiwhthout/v1/queryHomeScrollData', params, callback, 'get')
 };
