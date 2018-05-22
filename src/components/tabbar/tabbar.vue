@@ -30,6 +30,8 @@
         height: px2rem(98)
         bottom: 0
         left:0
+        z-index: 999
+        background-color: #fff
         .tabList
             width: 100%
             height: px2rem(98)

@@ -45,8 +45,7 @@ export default {
   methods: {
    jumpPage(url) {
      if (url) {
-       Toast("跳转到" + url)
-
+         this.$vux.toast.text("跳转到" + url)
      }
    }
   }
