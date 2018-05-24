@@ -80,8 +80,10 @@ export default {
 
     .headList {
         width: 100%;
-        height: px2rem(88);
-        border-bottom: px2rem(1) solid #f0f0f0;
+        z-index:100    //
+        position: fixed
+        background-color #fff
+        height: px2rem(88)
         white-space: nowrap; // 控制li的横向滚动超出屏幕情况的处理
         overflow: auto;
 
@@ -92,7 +94,7 @@ export default {
             .list {
                 display: flex;
                 float: none;
-                padding: px2rem(25);
+                padding: px2rem(23) px2rem(25)
                 font-size: px2rem(30);
                 color: #666;
                 text-align: center;
@@ -101,24 +103,25 @@ export default {
             }
 
             .listActive {
-                padding: px2rem(25) px2rem(25) 0 px2rem(25);
+                padding: px2rem(23) px2rem(25) 0 px2rem(25);
                 font-size: px2rem(32);
                 color: #fe9f28;
-                border-bottom: px2rem(8) #fe9f28 solid;
+                border-bottom: px2rem(4) #fe9f28 solid;
             }
         }
     }
 
     .card {
+        position relative
+        top:px2rem(88)
         width: 100%;
-        height: px2rem(312);
-        white-space: nowrap; // 控制li的横向滚动超出屏幕情况的处理
-        overflow: auto;
+        height: px2rem(302);
+        overflow: auto
 
         .cardTab {
-            display: -webkit-box; // 取消 display: flex;  使用这个-webkit-box 保证li显示完整
+            display: -webkit-box;  //子控件一排显示
             width: 100%;
-            margin: px2rem(40) px2rem(40) px2rem(62) px2rem(40);
+            margin: px2rem(30) px2rem(40) px2rem(42) px2rem(40);
 
             .cardList {
                 position: relative;
@@ -168,7 +171,7 @@ export default {
 
     .loan {
         width: 100%;
-        margin-top: px2rem(5);
+        margin-top: px2rem(88);
 
         .loanTab {
             margin: 0 px2rem(34);

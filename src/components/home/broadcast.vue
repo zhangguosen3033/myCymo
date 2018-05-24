@@ -1,51 +1,47 @@
 <template>
- <div class="contentDiv">
-     <div class="headBox">
-         <div class="icon"></div>
-         <Marquee>
-             <MarqueeItem  v-for="(item,index) in homeScrollData" :key="index" class="scrollinfo">
-                 <span>{{item.textContent}}</span>
-                 <span class="redText">{{item.amount}}</span>
-                 万元
-             </MarqueeItem>
-         </Marquee>
-     </div>
-     <div class="gray"></div>
-     <div class="boxDiv">
-         <p class="headTitle">
-           <span>房金云</span>房金云在手，银行贷款无忧！
-         </p>
-
-     <div class="RangeBox">
-         <p><span>{{rangeValue}}</span>万 </p>
-         <Range :step="1" v-model="rangeValue" :min="1" :max="1000" ></Range>
-         <div class="apply" @click ='goApply'>立即申请</div>
-     </div>
-
-      <div class="bottomDiv">
-        <div>
-          <p class="title"> 额度高</p>
-          <p class="desc">{{applyDescData.loanQuota}}</p>
+    <div class="contentDiv">
+        <div class="headBox">
+            <div class="icon"></div>
+            <Marquee>
+                <MarqueeItem v-for="(item,index) in homeScrollData" :key="index" class="scrollinfo">
+                    <span>{{item.textContent}}</span>
+                    <span class="redText">{{item.amount}}</span>
+                    万元
+                </MarqueeItem>
+            </Marquee>
         </div>
-        <div>
-          <p class="title"> 利率低</p>
-          <p class="desc">{{applyDescData.monthlyRate}}</p>
+        <div class="gray"></div>
+        <div class="headTitleBox">
+            <p class="headTitle"><span>房金云</span>房金云在手，银行贷款无忧！</p>
+            
+            <div class="RangeBox">
+                <p><span>{{rangeValue}}</span>万 </p>
+                <Range :step="1" v-model="rangeValue" :min="1" :max="1000"></Range>
+                <div class="apply" @click='goApply'>立即申请</div>
+            </div>
+
+            <div class="bottomDiv">
+                <div>
+                    <p class="title"> 额度高</p>
+                    <p class="desc">{{applyDescData.loanQuota}}</p>
+                </div>
+                <div>
+                    <p class="title"> 利率低</p>
+                    <p class="desc">{{applyDescData.monthlyRate}}</p>
+                </div>
+                <div>
+                    <p class="title"> 放款快</p>
+                    <p class="desc">{{applyDescData.loanTerm}}</p>
+                </div>
+            </div>
+
         </div>
-        <div>
-          <p class="title"> 放款快</p>
-          <p class="desc">{{applyDescData.loanTerm}}</p>
-        </div>
-      </div>
-
-     </div>
- </div>
-
-
+    </div>
 </template>
 
 <script>
-import { getHomeProductCfg, getHomeScrollData } from "../../api/productApi.js";
-import { Marquee, MarqueeItem, Range } from "vux";
+import { getHomeProductCfg, getHomeScrollData } from '../../api/productApi.js'
+import { Marquee, MarqueeItem, Range } from 'vux'
 export default {
   components: {
     Marquee,
@@ -57,27 +53,27 @@ export default {
       rangeValue: 500,
       applyDescData: {},
       homeScrollData: {}
-    };
+    }
   },
   computed: {},
   mounted() {
     getHomeProductCfg(null, res => {
-      if (res.status == "200") {
-        this.applyDescData = res.data;
+      if (res.status == '200') {
+        this.applyDescData = res.data
       }
-    });
+    })
     getHomeScrollData(null, res => {
-      if (res.status == "200") {
-        this.homeScrollData = res.data.data.loanItem;
+      if (res.status == '200') {
+        this.homeScrollData = res.data.data.loanItem
       }
-    });
+    })
   },
   methods: {
     goApply() {
-      this.$vux.toast.text("申请贷款");
+      this.$vux.toast.text('申请贷款')
     }
   }
-};
+}
 </script>
 <style lang="stylus"  type="text/stylus" rel="stylesheet/stylus" >
 @import './../../common/stylus/pxrem.styl';
@@ -119,7 +115,7 @@ export default {
     height: px2rem(20);
 }
 
-.boxDiv {
+.headTitleBox {
     background-color: #ffffff;
     width: 100%;
     height: px2rem(520);
@@ -184,8 +180,6 @@ export default {
     .vux-range-input-box {
         margin: px2rem(30) px2rem(0) px2rem(50) px2rem(0) !important;
 
-        // margin-top: px2rem(30)
-        // margin-bottom: px2rem(50)
         .range-bar {
             background-color: #f0f0f0;
             height: px2rem(10) !important;

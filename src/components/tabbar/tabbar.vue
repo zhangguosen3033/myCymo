@@ -77,12 +77,14 @@
                     background-size: px2rem(40);
                     background-position: center px2rem(12);
                 }
-         .newsTabItem {
+
+                .newsTabItem {
                     bg-image('../../assets/images/nav_top');
                     background-repeat: no-repeat;
                     background-size: px2rem(40);
                     background-position: center px2rem(12);
                 }
+
                 .mineTabItem {
                     bg-image('../../assets/images/nav_mine');
                     background-repeat: no-repeat;
@@ -114,12 +116,14 @@
                     background-size: px2rem(40);
                     background-position: center px2rem(12);
                 }
-           .newsTabItem {
+
+                .newsTabItem {
                     bg-image('../../assets/images/nav_top_active');
                     background-repeat: no-repeat;
                     background-size: px2rem(40);
                     background-position: center px2rem(12);
                 }
+
                 .mineTabItem {
                     bg-image('../../assets/images/nav_mine_active');
                     background-repeat: no-repeat;
