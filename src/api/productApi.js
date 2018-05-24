@@ -29,3 +29,8 @@ export function getHomeScrollData(params, callback) {
 export function getProductCate(params, callback) {
   getAxios(productBaseUrl + '/apiwithout/v2/getCaseHeadType', params, callback, 'get')
 };
+
+//获取案例详情
+export function getCaseDetail(params, callback) {
+  getAxios(productBaseUrl + '/apiwithout/v1/getCaseInfoById', params, callback, 'get')
+};

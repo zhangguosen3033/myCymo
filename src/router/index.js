@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import tabbar from '@/components/tabbar/tabbar'
+import tabbar from '@/components/common/tabbar'
 import home from '@/views/home'
 import news from '@/views/news'
 import loan from '@/views/loan'
 import mine from '@/views/mine'
 import productData from '@/views/product/productData'
+import caseData from '@/views/product/caseData'
+
 
 Vue.use(Router)
 
@@ -40,5 +42,9 @@ export default new Router({
       component: productData,
 
     },
+    {
+      path: '/product/caseData',
+      component:caseData,
+    }
   ]
 })

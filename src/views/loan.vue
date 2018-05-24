@@ -8,7 +8,7 @@
 
 <div class="card">
     <ul class="cardTab">
-      <li class= "cardList" v-for="(item,index) in selectCardData.cases" :key=""  :class="{'cardList2':index == '0', 'cardList2':index == '1','cardList3':index == '2'}">
+      <li class= "cardList" v-for="(item,index) in selectCardData.cases" :key="" @click="goCaseData(item)" :class="{'cardList2':index == '0', 'cardList2':index == '1','cardList3':index == '2'}">
           <span class="title">{{item.case_title}}</span>
           <img :src="item.case_img_url" alt="">
           <div class="desc" v-if="index == 0">案例一</div>
@@ -67,6 +67,15 @@ export default {
   methods: {
     tebItemClick(item, index) {
       ;(this.selectedTab = item.id), (this.selectCardData = item.bodyInfo)
+    },
+    
+    goCaseData(item) {
+      this.$router.push({
+        path: '/product/caseData',
+        query: {
+          caseId: item.case_id
+        }
+      })
     }
   }
 }
@@ -80,10 +89,10 @@ export default {
 
     .headList {
         width: 100%;
-        z-index:100    //
-        position: fixed
-        background-color #fff
-        height: px2rem(88)
+        z-index: 100; // 
+        position: fixed;
+        background-color: #fff;
+        height: px2rem(88);
         white-space: nowrap; // 控制li的横向滚动超出屏幕情况的处理
         overflow: auto;
 
@@ -94,7 +103,7 @@ export default {
             .list {
                 display: flex;
                 float: none;
-                padding: px2rem(23) px2rem(25)
+                padding: px2rem(23) px2rem(25);
                 font-size: px2rem(30);
                 color: #666;
                 text-align: center;
@@ -112,14 +121,14 @@ export default {
     }
 
     .card {
-        position relative
-        top:px2rem(88)
+        position: relative;
+        top: px2rem(88);
         width: 100%;
         height: px2rem(302);
-        overflow: auto
+        overflow: auto;
 
         .cardTab {
-            display: -webkit-box;  //子控件一排显示
+            display: -webkit-box; // 子控件一排显示
             width: 100%;
             margin: px2rem(30) px2rem(40) px2rem(42) px2rem(40);
 
@@ -232,15 +241,15 @@ export default {
                         background-size: 100% 100%;
                     }
                 }
-                .type{
-                    position :absolute;
-                    top :px2rem(13)
-                    left :px2rem(12)
-                    font-size :px2rem(22)
-                    color:#fff
-                    font-weight :bolder
-                    transform: rotate(-45deg);
 
+                .type {
+                    position: absolute;
+                    top: px2rem(13);
+                    left: px2rem(12);
+                    font-size: px2rem(22);
+                    color: #fff;
+                    font-weight: bolder;
+                    transform: rotate(-45deg);
                 }
             }
 
@@ -255,15 +264,14 @@ export default {
             }
         }
     }
-    .bottom{
-        background-color :#fff
-        width 100%;
-        height :px2rem(180)
+
+    .bottom {
+        background-color: #fff;
+        width: 100%;
+        height: px2rem(180);
         bg-image('../assets/images/房金云在手银行贷款无忧');
         background-size: px2rem(450);
         background-position: center top px2rem(80);
-
-
     }
 }
 </style>
