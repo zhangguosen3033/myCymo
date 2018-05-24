@@ -24,3 +24,8 @@ export function getHomeProductCfg(params, callback) {
 export function getHomeScrollData(params, callback) {
   getAxios(crmBaseUrl + '/apiwhthout/v1/queryHomeScrollData', params, callback, 'get')
 };
+
+//获取产品分类
+export function getProductCate(params, callback) {
+  getAxios(productBaseUrl + '/apiwithout/v2/getCaseHeadType', params, callback, 'get')
+};

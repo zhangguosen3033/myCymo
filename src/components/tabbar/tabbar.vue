@@ -6,7 +6,7 @@
                     <div class="indexTabItem">首页</div>
                 </router-link>
                 <router-link to="/news">
-                    <div class="topTabItem">头条</div>
+                    <div class="topTabItem">贷款</div>
                 </router-link>
                 <router-link to="/mine">
                     <div class="mineTabItem">我的</div>
