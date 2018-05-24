@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import tabbar from '@/components/tabbar/tabbar'
 import home from '@/views/home'
 import news from '@/views/news'
+import loan from '@/views/loan'
 import mine from '@/views/mine'
 import productData from '@/views/product/productData'
 
@@ -19,6 +20,10 @@ export default new Router({
       children: [{
           path: '/home',
           component: home,
+        },
+        {
+          path: '/loan',
+          component: loan
         },
         {
           path: '/news',

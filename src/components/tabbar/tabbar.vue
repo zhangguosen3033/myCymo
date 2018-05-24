@@ -5,8 +5,11 @@
                 <router-link to="/home">
                     <div class="indexTabItem">首页</div>
                 </router-link>
-                <router-link to="/news">
+                <router-link to="/loan">
                     <div class="topTabItem">贷款</div>
+                </router-link>
+                <router-link to="/news">
+                    <div class="newsTabItem">新闻</div>
                 </router-link>
                 <router-link to="/mine">
                     <div class="mineTabItem">我的</div>
@@ -47,7 +50,7 @@
 
             a {
                 height: 100%;
-                width: 30%;
+                width: 25%;
                 flex: 1;
                 text-decoration: none;
                 color: #646464;
@@ -74,7 +77,12 @@
                     background-size: px2rem(40);
                     background-position: center px2rem(12);
                 }
-
+         .newsTabItem {
+                    bg-image('../../assets/images/nav_top');
+                    background-repeat: no-repeat;
+                    background-size: px2rem(40);
+                    background-position: center px2rem(12);
+                }
                 .mineTabItem {
                     bg-image('../../assets/images/nav_mine');
                     background-repeat: no-repeat;
@@ -106,7 +114,12 @@
                     background-size: px2rem(40);
                     background-position: center px2rem(12);
                 }
-
+           .newsTabItem {
+                    bg-image('../../assets/images/nav_top_active');
+                    background-repeat: no-repeat;
+                    background-size: px2rem(40);
+                    background-position: center px2rem(12);
+                }
                 .mineTabItem {
                     bg-image('../../assets/images/nav_mine_active');
                     background-repeat: no-repeat;
