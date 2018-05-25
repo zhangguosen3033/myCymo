@@ -5,6 +5,7 @@ let productBaseUrl = 'prometheus-backend';
 let parisBaseUrl = 'paris-backend';
 let crmBaseUrl = 'thea-backend';
 
+
 //热销产品接口
 export function getHotProduct(params, callback) {
   getAxios(productBaseUrl + '/apiwithout/v1/getTopicPro', params, callback, 'get')
@@ -33,4 +34,18 @@ export function getProductCate(params, callback) {
 //获取案例详情
 export function getCaseDetail(params, callback) {
   getAxios(productBaseUrl + '/apiwithout/v1/getCaseInfoById', params, callback, 'get')
+};
+
+
+//news
+let pandoraBaseUrl = 'pandora-backend';
+let nireusBaseUrl = 'nireus-backend';
+
+//取得资讯首页Title和栏目
+export function getNewsTabTitleInfo(params, callback) {
+  getAxios(pandoraBaseUrl + '/apinoauth/v2/getTitleInfo', params, callback, 'get')
+};
+//取得资讯列表
+export function getNewsListByThemeId(params, callback) {
+  getAxios(pandoraBaseUrl + '/apinoauth/v2/getInfoList', params, callback, 'get')
 };

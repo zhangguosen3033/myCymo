@@ -98,8 +98,6 @@ export default {
 
         .headtab {
             display: flex;
-            margin: 0 px2rem(25);
-
             .list {
                 display: flex;
                 float: none;

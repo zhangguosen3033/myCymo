@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+import VueScroller from 'vue-scroller'
+
 import Vuex from 'vuex'
 import {
   AlertPlugin,
@@ -13,6 +15,9 @@ import {
 } from 'vux'
 
 Vue.config.productionTip = false
+
+Vue.use(VueScroller)
+
 
 Vue.use(Vuex)
 Vue.use(AlertPlugin)
