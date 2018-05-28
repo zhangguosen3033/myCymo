@@ -175,24 +175,24 @@ export default {
     })
   }
 
-  //  beforeRouteEnter(to,from,next){
-  //         if(!sessionStorage.askPositon || from.path == '/'){//当前页面刷新不需要切换位置
-  //             sessionStorage.askPositon = '';
-  //             next();
-  //         }else{
-  //             next(vm => {
-  //                 if(vm && vm.$refs.scrollerBottom){//通过vm实例访问this
-  //                 setTimeout(function () {
-  //                     vm.$refs.scrollerBottom.scrollTo(0, sessionStorage.askPositon, false);
-  //                 },0)//同步转异步操作
-  //                 }
-  //             })
-  //         }
-  //     },
-  //     beforeRouteLeave(to,from,next){//记录离开时的位置
-  //         sessionStorage.askPositon = this.$refs.scrollerBottom && this.$refs.scrollerBottom.getPosition() && this.$refs.scrollerBottom.getPosition().top;
-  //         next()
-  //     },
+//    beforeRouteEnter(to,from,next){
+//           if(!sessionStorage.askPositon || from.path == '/'){//当前页面刷新不需要切换位置
+//               sessionStorage.askPositon = '';
+//               next();
+//           }else{
+//               next(vm => {
+//                   if(vm && vm.$refs.scrollerBottom){//通过vm实例访问this
+//                   setTimeout(function () {
+//                       vm.$refs.scrollerBottom.scrollTo(0, sessionStorage.askPositon, false);
+//                   },0)//同步转异步操作
+//                   }
+//               })
+//           }
+//       },
+//       beforeRouteLeave(to,from,next){//记录离开时的位置
+//           sessionStorage.askPositon = this.$refs.scrollerBottom && this.$refs.scrollerBottom.getPosition() && this.$refs.scrollerBottom.getPosition().top;
+//           next()
+//       },
 }
 </script>
 
