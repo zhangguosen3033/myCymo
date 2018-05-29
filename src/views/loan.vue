@@ -21,7 +21,7 @@
 
 <div class="loan">
     <ul class="loanTab">
-      <li class= "loanList" v-for="(item,index) in selectCardData.products" :key=""  :class="{'loanList2':item.productType == '抵押','loanList3':item.productType == '赎楼'}">
+      <li class= "loanList" v-for="(item,index) in selectCardData.products" :key=""  :class="{'loanList2':item.productType == '抵押','loanList3':item.productType == '赎楼'}" @click="productClick(item)">
          
             <div class="type">{{item.productType}}</div> 
             <div class="loanLeft">
@@ -76,6 +76,17 @@ export default {
           caseId: item.case_id
         }
       })
+    },
+      productClick(item) {
+     console.log(item.productType),
+      this.$router.push({
+        path: "/product/productData",
+        query: {
+          caseId: item.caseId,
+          productId: item.productId,
+          productType: item.productType
+        }
+      });
     }
   }
 }

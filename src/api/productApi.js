@@ -36,6 +36,19 @@ export function getCaseDetail(params, callback) {
   getAxios(productBaseUrl + '/apiwithout/v1/getCaseInfoById', params, callback, 'get')
 };
 
+//获取产品详情
+export function getProductDetail(params, callback) {
+  getAxios(productBaseUrl + '/apiwithout/v1/caseProductInfo', params, callback, 'get')
+};
+
+//获取贷款记录（关联案例）
+export function getCaseLoanRecord(params, callback) {
+  getAxios(parisBaseUrl + '/apiwithout/v1/caseProDetail', params, callback, 'get')
+};
+
+
+
+
 
 //news
 let pandoraBaseUrl = 'pandora-backend';
@@ -49,3 +62,6 @@ export function getNewsTabTitleInfo(params, callback) {
 export function getNewsListByThemeId(params, callback) {
   getAxios(pandoraBaseUrl + '/apinoauth/v2/getInfoList', params, callback, 'get')
 };
+
+
+

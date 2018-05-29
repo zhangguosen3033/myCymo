@@ -152,7 +152,6 @@
             }
         }
     }
-
     .listDIv {
         width: 100%;
         border-top : solid #f0f0f0 px2rem(2);
