@@ -51,9 +51,9 @@ export default {
     this.caseId = this.$route.query.caseId
   },
   methods: {
-      goApply() {
-          this.$vux.toast.text('申请贷款')
-      }
+    goApply() {
+      this.$vux.toast.text('申请贷款')
+    }
   }
 }
 </script>
@@ -87,13 +87,13 @@ export default {
     }
 
     .apply {
-        position fixed;
-        display flex
+        position: fixed;
+        display: flex;
         align-items: center;
         justify-content: center; /* 水平居中 */
-        bottom :0
-        width :100%
-        height :px2rem(90)
+        bottom: 0;
+        width: 100%;
+        height: px2rem(90);
         background-color: #ffb323;
         color: #fff;
         font-size: px2rem(36);

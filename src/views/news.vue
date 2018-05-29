@@ -175,24 +175,24 @@ export default {
     })
   }
 
-//    beforeRouteEnter(to,from,next){
-//           if(!sessionStorage.askPositon || from.path == '/'){//当前页面刷新不需要切换位置
-//               sessionStorage.askPositon = '';
-//               next();
-//           }else{
-//               next(vm => {
-//                   if(vm && vm.$refs.scrollerBottom){//通过vm实例访问this
-//                   setTimeout(function () {
-//                       vm.$refs.scrollerBottom.scrollTo(0, sessionStorage.askPositon, false);
-//                   },0)//同步转异步操作
-//                   }
-//               })
-//           }
-//       },
-//       beforeRouteLeave(to,from,next){//记录离开时的位置
-//           sessionStorage.askPositon = this.$refs.scrollerBottom && this.$refs.scrollerBottom.getPosition() && this.$refs.scrollerBottom.getPosition().top;
-//           next()
-//       },
+  //    beforeRouteEnter(to,from,next){
+  //           if(!sessionStorage.askPositon || from.path == '/'){//当前页面刷新不需要切换位置
+  //               sessionStorage.askPositon = '';
+  //               next();
+  //           }else{
+  //               next(vm => {
+  //                   if(vm && vm.$refs.scrollerBottom){//通过vm实例访问this
+  //                   setTimeout(function () {
+  //                       vm.$refs.scrollerBottom.scrollTo(0, sessionStorage.askPositon, false);
+  //                   },0)//同步转异步操作
+  //                   }
+  //               })
+  //           }
+  //       },
+  //       beforeRouteLeave(to,from,next){//记录离开时的位置
+  //           sessionStorage.askPositon = this.$refs.scrollerBottom && this.$refs.scrollerBottom.getPosition() && this.$refs.scrollerBottom.getPosition().top;
+  //           next()
+  //       },
 }
 </script>
 
@@ -309,7 +309,7 @@ export default {
         }
 
         .ThreeImgItem {
-            box-sizing border-box //设置这种模式不再设置div高度 总高度由各控件相加组成 撑开显示
+            box-sizing: border-box; // 设置这种模式不再设置div高度 总高度由各控件相加组成 撑开显示
             padding: px2rem(30) px2rem(22);
             // height: px2rem(328);   //不再需要
             position: relative;
@@ -347,15 +347,15 @@ export default {
                 }
             }
         }
-        .noText{
-            display flex
-            height :px2rem(80)
-            background-color :#f0f0f0
-            color :#999
-            font-size :px2rem(30)
-            justify-content: center; //居中设置
-            align-items: center;
 
+        .noText {
+            display: flex;
+            height: px2rem(80);
+            background-color: #f0f0f0;
+            color: #999;
+            font-size: px2rem(30);
+            justify-content: center; // 居中设置
+            align-items: center;
         }
     }
 }

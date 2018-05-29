@@ -68,7 +68,7 @@ export default {
     tebItemClick(item, index) {
       ;(this.selectedTab = item.id), (this.selectCardData = item.bodyInfo)
     },
-    
+
     goCaseData(item) {
       this.$router.push({
         path: '/product/caseData',
@@ -77,16 +77,15 @@ export default {
         }
       })
     },
-      productClick(item) {
-     console.log(item.productType),
+    productClick(item) {
       this.$router.push({
-        path: "/product/productData",
+        path: '/product/productData',
         query: {
           caseId: item.caseId,
           productId: item.productId,
           productType: item.productType
         }
-      });
+      })
     }
   }
 }
@@ -109,6 +108,7 @@ export default {
 
         .headtab {
             display: flex;
+
             .list {
                 display: flex;
                 float: none;

@@ -12,10 +12,12 @@
         </div>
         <div class="gray"></div>
         <div class="headTitleBox">
-            <p class="headTitle"><span>房金云</span>房金云在手，银行贷款无忧！</p>
-            
+            <p class="headTitle">
+                <span>房金云</span>房金云在手，银行贷款无忧！</p>
+
             <div class="RangeBox">
-                <p><span>{{rangeValue}}</span>万 </p>
+                <p>
+                    <span>{{rangeValue}}</span>万 </p>
                 <Range :step="1" v-model="rangeValue" :min="1" :max="1000"></Range>
                 <div class="apply" @click='goApply'>立即申请</div>
             </div>

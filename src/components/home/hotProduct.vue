@@ -1,80 +1,86 @@
 <template>
     <div class="bottomBox">
-       <div class="hotTitle"> <span class="title"> <span class="icon"></span>热门贷款产品</span></div>
+        <div class="hotTitle">
+            <span class="title">
+                <span class="icon"></span>热门贷款产品</span>
+        </div>
 
+        <div class="loanBox">
+            <div class="item" v-for="(item,index) in selectContentData" :class="{'item2':index == '1','item3':index == '2'}" @click="productClick(item)" :key="index">
+                <span class="tag">{{item.productType}}</span>
+                <p class="font1">月利率</p>
+                <p class="font2">{{item.rate}}
+                    <span>%</span>
+                </p>
+                <p class="font3">{{item.loanNumbers}}人已放款</p>
+            </div>
+        </div>
 
-       <div class="loanBox">
-         <div class="item" v-for="(item,index) in selectContentData" :class="{'item2':index == '1','item3':index == '2'}" @click="productClick(item)" :key="index">
-           <span class="tag">{{item.productType}}</span>
-            <p class="font1">月利率</p>
-            <p class="font2">{{item.rate}}<span>%</span></p>
-            <p class="font3">{{item.loanNumbers}}人已放款</p>
-         </div>
-       </div>
+        <div class="hotTitle">
+            <span class="title">
+                <span class="icon icon2"></span>我们的优势</span>
+        </div>
 
+        <div class="aboutUS">
+            <div class="aboutList">
+                <div class="item">
+                    <p class="tit">正规贷款</p>
+                    <p class="con">与中原银行等千家正规机构合作</p>
+                </div>
+                <div class="item item2">
+                    <p class="tit">服务内容</p>
+                    <p class="con">专属顾问随时在线全程服务</p>
+                </div>
+            </div>
+            <div class="aboutList">
+                <div class="item item3">
+                    <p class="tit">三大承诺</p>
+                    <p class="con">多方案解决，一次报价，不成功不收费</p>
+                </div>
+                <div class="item item4">
+                    <p class="tit">关于我们</p>
+                    <p class="con">中国互联网金融协会会员</p>
+                </div>
+            </div>
+        </div>
 
-       <div class="hotTitle"> <span class="title"> <span class="icon icon2"></span>我们的优势</span></div>
-
-       <div class="aboutUS">
-           <div class="aboutList">
-             <div class="item">
-               <p class="tit">正规贷款</p>
-               <p class="con">与中原银行等千家正规机构合作</p>
-             </div>
-             <div class="item item2">
-               <p class="tit">服务内容</p>
-               <p class="con">专属顾问随时在线全程服务</p>
-             </div>
-           </div>
-           <div class="aboutList">
-             <div class="item item3">
-               <p class="tit">三大承诺</p>
-               <p class="con">多方案解决，一次报价，不成功不收费</p>
-             </div>
-             <div class="item item4">
-               <p class="tit">关于我们</p>
-               <p class="con">中国互联网金融协会会员</p>
-             </div>
-           </div>
-       </div>
-
-       <div class="logo"></div>
-       </div>
+        <div class="logo"></div>
+    </div>
 
 </template>
 
 <script>
-import { getHotProduct } from "../../api/productApi.js";
+import { getHotProduct } from '../../api/productApi.js'
 
 export default {
   components: {},
   data() {
     return {
-      selectContentData: ""
-    };
+      selectContentData: ''
+    }
   },
   computed: {},
   mounted() {
     // This.getHeaderHotData()
     getHotProduct(null, res => {
-      if (res.status == "200") {
-        this.selectContentData = res.data;
+      if (res.status == '200') {
+        this.selectContentData = res.data
       }
-    });
+    })
   },
   methods: {
     productClick(item) {
       this.$router.push({
-        path: "/product/productData",
+        path: '/product/productData',
         query: {
           caseId: item.caseId,
           productId: item.productId,
           productType: item.productType
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <style lang="stylus" type="text/stylus" scoped rel="stylesheet/stylus">

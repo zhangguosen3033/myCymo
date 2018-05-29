@@ -62,7 +62,6 @@
             <p class="conditionsTitle">所需材料</p>
             <div class="itemInfoWrap" v-for="item in detailData.materials" :key="item">
                 <p class="infoDetail">{{item}}</p>
-                <!-- <p class="infoDetail">9812839129839012890390hsdfjsafj万一贼长怎么办万一贼长怎么办呢万一贼长怎么办呢万一贼长怎么办呢万一贼长怎么办呢万一贼长怎么办呢呢klljkaJDKJA哈哈哈哈 长坝</p> -->
             </div>
         </div>
 
@@ -79,7 +78,6 @@
 
             <p class="recordNone" v-if="applyRecord.length < 1">暂无申请记录</p>
         </div>
-
         <p class="apply" @click="goApply()">申请贷款</p>
 
     </div>
@@ -100,16 +98,15 @@ export default {
     }
   },
   computed: {
-
-      wrapClass: function(){
-          if(this.productType === '赎楼'){
-              return 'topContentSl'
-          }else if(this.productType === '抵押'){
-              return 'topContentDy'
-          }else{
-              return 'topContentXy'
-          }
+    wrapClass: function() {
+      if (this.productType === '赎楼') {
+        return 'topContentSl'
+      } else if (this.productType === '抵押') {
+        return 'topContentDy'
+      } else {
+        return 'topContentXy'
       }
+    }
   },
   created() {
     this.caseId = this.$route.query.caseId
@@ -329,6 +326,7 @@ export default {
                 text-align: left;
                 color: #646464;
                 font-size: px2rem(26);
+                word-wrap: break-word;
             }
         }
     }

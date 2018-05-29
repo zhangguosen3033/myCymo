@@ -66,7 +66,7 @@
     background-color: #fff;
 
     .headDiv {
-        z-index 100
+        z-index: 100;
         width: 100%;
         height: px2rem(450);
         bg-image('../assets/images/has_sign_back');
@@ -152,9 +152,10 @@
             }
         }
     }
+
     .listDIv {
         width: 100%;
-        border-top : solid #f0f0f0 px2rem(2);
+        border-top: solid #f0f0f0 px2rem(2);
 
         .list {
             width: 100%;
@@ -162,16 +163,17 @@
             border-bottom: solid #f0f0f0 px2rem(1);
 
             p {
-                position absolute
-                margin-top px2rem(40) 
+                position: absolute;
+                margin-top: px2rem(40);
                 font-size: px2rem(30);
                 font-weight: bolder;
                 text-align: left;
                 margin-left: px2rem(30);
             }
+
             img {
                 float: right;
-                margin-top px2rem(40)
+                margin-top: px2rem(40);
                 margin-right: px2rem(30);
                 width: px2rem(17);
                 height: px2rem(31);
