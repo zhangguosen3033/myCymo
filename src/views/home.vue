@@ -28,6 +28,7 @@ export default {
     width: 100%;
     height: 100%;
     overflow hidden   //设置这个属性 如果存在子控件过宽 直接隐藏  控制当前页面宽度
+    padding-bottom px2rem(30)
     // background-color: #f0f0f0
 }
 </style>

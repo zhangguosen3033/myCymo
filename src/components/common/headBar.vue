@@ -37,19 +37,22 @@ export default {
 
     .icon {
         width: px2rem(35);
-        height: px2rem(35);
+        height: px2rem(30);
         position: absolute;
         left: px2rem(30);
-        top: px2rem(27);
+        top: px2rem(30);
         bg-image('../../assets/images/right_arrow_black');
         background-size: 100% 100%;
     }
 
     .title {
+        display inline
         position: absolute;
-        top: px2rem(27);
+        // top: px2rem(27);
         left: px2rem(90);
-        font-size: px2rem(25);
+        font-size: px2rem(30);
+        padding-top :px2rem(25);
+        padding-bottom :px2rem(25)
     }
 }
 </style>

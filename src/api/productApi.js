@@ -65,3 +65,21 @@ export function getNewsListByThemeId(params, callback) {
 
 
 
+//登陆信息接口
+//获取短信验证码
+export function getIndentifyMessage(params, callback) {
+    getAxios('thor-backend/api/v1/sendMessage', params, callback, 'post')
+};
+
+//用户登录
+export function userLogin(params, callback) {
+    getAxios('thor-backend/v2/normalLogin', params, callback, 'post')
+};
+
+//获取用户信息
+export function getUserInfo(params, callback) {
+    getAxios('thor-backend/api/v1/getSortUserInfo', params, callback, 'get')
+};
+
+
+

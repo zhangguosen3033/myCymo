@@ -3,13 +3,13 @@
 <div class="content">
  <div class="headDiv">
      <div class="headBox">
-        <div class="leftBox">
-            <p class="login">立即登录</p>
+        <div class="leftBox" @click="goLogin()">
+            <p class="login">{{userName}}</p>
             <p class="logoTitle">房金云在手，银行贷款无忧</p>
         </div>
         <div class="rightBox">
             <div class="headIconDiv">
-                 <img src= "../assets/images/my_pic@2x.png" class="headIcon"/>
+                 <img :src= "headIcon" class="headIcon"/>
             </div>
             <img src = "../assets/images/arrow_right@2x.png" class="rightIcon"/>
         </div>
@@ -56,9 +56,68 @@
    </div>
 </div>
 
-
-
 </template>
+<script>
+import { getUserInfo } from './../api/productApi.js'
+export default {
+  components: {},
+  data() {
+    return {
+        isLogined:false,
+        headIcon:'../assets/images/my_pic@2x.png',
+        userName:'立即登录'
+    };
+  },
+  mounted() {},
+  created() {
+       this.isLogined = localStorage.getItem("userToken") ? true : false;
+        if (this.isLogined) {
+            console.log('已经登陆过')
+			this.getUserInfoFuc();
+		}else {
+        }
+  },
+  activated(){
+        // this.isLogined = localStorage.getItem("userToken") ? true : false;
+        // if (this.isLogined) {
+        //     console.log('已经登陆过')
+		// 	this.getUserInfoFuc();
+		// }else {
+        // }
+    },
+  methods: {
+        getUserInfoFuc() {
+            getUserInfo(null, res => {
+                            if(res.status == 200){
+                                if (res.data.result == 0) {
+                                    let dataContent = res.data.data;
+                                    var transformName = '';
+                                    if(dataContent.name){
+                                        var transformName = dataContent.name;
+                                    }
+            //	                    let transformPhone = dataContent.telephone;
+                                    this.userName = transformName || '亲爱的用户';
+                                    localStorage.setItem('userNameLocal', dataContent.name);
+
+                                    // //加载其他信息
+                                    // this.userPhone = dataContent.telephone;
+                                    // this.tel = dataContent.telephone;
+                                    this.headIcon = dataContent.portrait || "../assets/images/my_pic@2x.png";
+                                    // this.getLoanInfoData();
+                                }else{
+                                    this.$vux.toast.text(res.data.message);
+                                }
+                            }
+                        });
+      },
+    goLogin() {
+      this.$router.push({
+        path: "/login/login"
+      });
+    }
+  }
+};
+</script>
 <style scoped lang="stylus"  type="text/stylus" rel="stylesheet/stylus" >
 @import './../common/stylus/pxrem.styl';
 
@@ -103,7 +162,7 @@
                 position: absolute;
                 top: px2rem(100);
                 right: px2rem(50);
-                padding: 0 0 0 px2rem(200);
+                padding: 0 px2rem(50) 0 px2rem(200);
                 height: px2rem(160);
 
                 .rightIcon {
@@ -122,6 +181,7 @@
 
                     .headIcon {
                         margin: auto;
+                        border-radius 50%
                         width: px2rem(125);
                         height: px2rem(125);
                     }

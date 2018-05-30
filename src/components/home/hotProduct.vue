@@ -267,7 +267,7 @@ export default {
     }
 
     .logo {
-        height: px2rem(100);
+        height: px2rem(80);
         background-color: #f0f0f0;
         bg-image('../../assets/images/房金云logo');
         background-size: px2rem(200);
