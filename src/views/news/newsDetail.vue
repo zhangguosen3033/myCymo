@@ -94,15 +94,16 @@ export default {
       title: "",
       infoDetail: "",
       count: "",
-      userPhone:'',//手机号
+      userPhone: "", //手机号
       listData: [], //相关新闻的列表
       commentList: [], //评论列表
       page: 0,
       size: 5,
       ishavemore: "加载更多跟帖", //底部加载更多的显示
-      commentData:'',
-      isCollect:false, //收藏
-      isHiddenNmae:false
+      commentData: "",
+      isCollect: false, //收藏
+      isHiddenNmae: false,
+      isLogined: false
     };
   },
   computed: {
@@ -117,7 +118,8 @@ export default {
   },
   mounted() {},
   created() {
-    this.userPhone = localStorage.getItem('userPhone');
+    this.isLogined = localStorage.getItem("userToken") ? true : false;
+    this.userPhone = localStorage.getItem("userPhone");
     this.themId = this.$route.query.themId;
     this.infoId = this.$route.query.infoId;
     this.getInfoDetail();
@@ -196,49 +198,53 @@ export default {
     },
     //收藏信息
     collect() {
-        //收藏的请求
-         var param = {
-                    "infoId": this.infoId,
-                    "themicId": this.themId,
-                    "userPhone": this.userPhone
-                };
-                toggleCollectInfo(this.isCollect,param, res=> {
-                    if (res.status == 200) {
-                            this.isCollect = !this.isCollect;
-                            this.$vux.toast.text(res.data.data);
-                    }
-                })
+      if (this.isLogined == false) {
+        this.$vux.toast.text("请先登录再收藏");
+        return;
+      }
+      //收藏的请求
+      var param = {
+        infoId: this.infoId,
+        themicId: this.themId,
+        userPhone: this.userPhone
+      };
+      toggleCollectInfo(this.isCollect, param, res => {
+        if (res.status == 200) {
+          this.isCollect = !this.isCollect;
+          this.$vux.toast.text(res.data.data);
+        }
+      });
     },
     //是否选择匿名
     hiddenName() {
-        this.isHiddenNmae =!this.isHiddenNmae;
+      this.isHiddenNmae = !this.isHiddenNmae;
     },
     //发送消息
     send() {
-      console.log('send')
-        	if(this.isLogin == false){
-			        this.$vux.toast.text('请先登录');
-			        return;
-                }
-                if(!this.commentData){
-                    this.$vux.toast.text('评论不能为空');
-                    return;
-                }
-                var param = {
-                    "comment": this.commentData,
-                    "infomationId": this.infoId,
-                    "isAnonymity": this.isHiddenNmae? 1: 2,
-	                "userType": 0
-                }
-               addComments(param, res=> {
-                    if (res.status == 200) {
-                        this.$vux.toast.text(res.data.data);
-                        this.page = 0;
-                        this.commentList = [];
-	                    this.commentData = '';
-	                    this.getComments();
-                    }
-               })
+      console.log("send");
+      if (this.isLogined == false) {
+        this.$vux.toast.text("请先登录");
+        return;
+      }
+      if (!this.commentData) {
+        this.$vux.toast.text("评论不能为空");
+        return;
+      }
+      var param = {
+        comment: this.commentData,
+        infomationId: this.infoId,
+        isAnonymity: this.isHiddenNmae ? 1 : 2,
+        userType: 0
+      };
+      addComments(param, res => {
+        if (res.status == 200) {
+          this.$vux.toast.text(res.data.data);
+          this.page = 0;
+          this.commentList = [];
+          this.commentData = "";
+          this.getComments();
+        }
+      });
     }
   }
 };
@@ -435,83 +441,93 @@ export default {
     .loadMoreDiv {
         background-color: #ffffff;
         width: 100%;
-        height px2rem(150)
-        margin-bottom px2rem(30)
-        padding-top px2rem(40)
+        height: px2rem(150);
+        margin-bottom: px2rem(30);
+        padding-top: px2rem(40);
+
         .loadmore {
-            margin  : px2rem(0) px2rem(250) px2rem(40) px2rem(250);
-            background-color  #fe9f28
-            color #fff
-            line-height px2rem(40)
-            border-radius px2rem(20)
+            margin: px2rem(0) px2rem(250) px2rem(40) px2rem(250);
+            background-color: #fe9f28;
+            color: #fff;
+            line-height: px2rem(40);
+            border-radius: px2rem(20);
         }
     }
-    .sendCommentDiv{
-        position fixed
-        display flex
-        flex-direction: row;  
-        flex-wrap: wrap; //设置换行需要设置各个控件的宽度
-        width 100%
-        box-sizing border-box
-        padding px2rem(20) px2rem(30) px2rem(20) px2rem(30)
-        bottom 0
+
+    .sendCommentDiv {
+        position: fixed;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; // 设置换行需要设置各个控件的宽度
+        width: 100%;
+        box-sizing: border-box;
+        padding: px2rem(20) px2rem(30) px2rem(20) px2rem(30);
+        bottom: 0;
         // height px2rem(100)
-        background-color #fff 
-        .inputclass{
-            height px2rem(60)
-            width px2rem(520)
-            background-color #f0f0f0
-            border-radius px2rem(30)
-            text-indent:px2rem(50);  //第一行缩进
+        background-color: #fff;
+
+        .inputclass {
+            height: px2rem(60);
+            width: px2rem(520);
+            background-color: #f0f0f0;
+            border-radius: px2rem(30);
+            text-indent: px2rem(50); // 第一行缩进
         }
-        .commentIcon{
-            position absolute
-            top px2rem(40)
-            left px2rem(50)
-            width px2rem(27)
-            height px2rem(107)
+
+        .commentIcon {
+            position: absolute;
+            top: px2rem(40);
+            left: px2rem(50);
+            width: px2rem(27);
+            height: px2rem(107);
             bg-image('../../assets/images/comment');
-            background-size:px2rem(27)
+            background-size: px2rem(27);
             // background-position:center
         }
-        .collect{
-            width px2rem(40)
-            height px2rem(40)
-            margin auto px2rem(30)
+
+        .collect {
+            width: px2rem(40);
+            height: px2rem(40);
+            margin: auto px2rem(30);
             bg-image('../../assets/images/no_collect');
-            background-size:px2rem(40) 100%
-            &.collected{
+            background-size: px2rem(40) 100%;
+
+            &.collected {
                 bg-image('../../assets/images/have_collect');
-                background-size:px2rem(40) 100%
+                background-size: px2rem(40) 100%;
             }
         }
-        .send{
-            margin auto 0
-            width px2rem(60)
-            font-size px2rem(26)
+
+        .send {
+            margin: auto 0;
+            width: px2rem(60);
+            font-size: px2rem(26);
         }
-        .hideenDiv{
-            margin-top px2rem(20)
-            display flex
-            .selctIcon{
-                flex 1
-                width px2rem(30)
-                height  px2rem(30)
-                margin auto
-                border solid px2rem(1) #f0f0f0
-                border-radius 50%
-                &.selctIconYes{
+
+        .hideenDiv {
+            margin-top: px2rem(20);
+            display: flex;
+
+            .selctIcon {
+                flex: 1;
+                width: px2rem(30);
+                height: px2rem(30);
+                margin: auto;
+                border: solid px2rem(1) #f0f0f0;
+                border-radius: 50%;
+
+                &.selctIconYes {
                     bg-image('../../assets/images/anony');
-                    background-size:100% 100%
+                    background-size: 100% 100%;
                 }
             }
-            .hidden{
-                margin-left px2rem(20)
-                color #646464
-                font-size px2rem(24)
+
+            .hidden {
+                margin-left: px2rem(20);
+                color: #646464;
+                font-size: px2rem(24);
             }
         }
- 
     }
 }
 </style>

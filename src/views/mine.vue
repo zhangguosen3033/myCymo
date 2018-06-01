@@ -8,9 +8,13 @@
             <p class="logoTitle">房金云在手，银行贷款无忧</p>
         </div>
         <div class="rightBox">
-            <div class="headIconDiv">
-                 <img :src= "headIcon" class="headIcon"/>
+            <div class="headIconDiv" v-if="headIconUrl">
+                <img  :src= "headIconUrl" class="headIcon"/>
             </div>
+            <div class="headIconDiv" v-else >
+                <img  src = "../assets/images/my_pic@2x.png" class="headIcon" />
+            </div>
+            
             <img src = "../assets/images/arrow_right@2x.png" class="rightIcon"/>
         </div>
      </div>
@@ -56,7 +60,7 @@ export default {
   data() {
     return {
       isLogined: false,
-      headIcon: "../assets/images/my_pic@2x.png",
+      headIconUrl: "",
       userName: "立即登录",
       tel: "",
       myBankCard: {
@@ -91,6 +95,7 @@ export default {
   },
   mounted() {},
   created() {
+    // localStorage.setItem("userToken", '');  //强制删除token
     this.isLogined = localStorage.getItem("userToken") ? true : false;
     if (this.isLogined) {
       //   console.log("已经登陆过");
@@ -115,8 +120,7 @@ export default {
             // //加载其他信息
             // this.userPhone = dataContent.telephone;
             this.tel = dataContent.telephone;
-            this.headIcon =
-              dataContent.portrait || "../assets/images/my_pic@2x.png";
+            this.headIconUrl = dataContent.portrait;
             // this.getLoanInfoData();
           } else {
             this.$vux.toast.text(res.data.message);
@@ -143,7 +147,7 @@ export default {
 
 .content {
     background-color: #fff;
-    overflow hidden
+    overflow: hidden;
 
     .headDiv {
         z-index: 100;
