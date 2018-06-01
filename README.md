@@ -1,6 +1,6 @@
 # my-cymoh5
 
-> A Vue.js project
+> A Vue.js project    Vue vue-cli + vue-router + axios+ vux 实现了项目的首页 借款页  新闻页 个人中心  产品详情 新闻详情等页面
 
 ## Build Setup
 
