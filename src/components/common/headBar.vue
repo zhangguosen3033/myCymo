@@ -4,8 +4,6 @@
             <span class="icon" @click="iconBack"></span>
             <span class="title">{{title}}</span>
         </div>
-        <router-view></router-view>
-
     </div>
 
 </template>

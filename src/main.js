@@ -38,3 +38,8 @@ new Vue({
   },
   template: '<App/>'
 })
+
+
+router.afterEach((to, from, next) => {
+    window.scrollTo(0, 0);  //全局的监听  路由跳转之后 滚动到屏幕首页 
+});

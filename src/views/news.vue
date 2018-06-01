@@ -12,7 +12,7 @@
             <div class='placeDivTop'></div> 
             <div v-for="(item,index) in listData" :key="item.id" class= "item">
 
-                <div class = "oneImgItem" v-if="item.image.length < 3" >  
+                <div class = "oneImgItem" v-if="item.image.length < 3"   @click="goDetail(item)">  
                     <div class="oneLeft">
                          <p class="newsTitle">{{item.title}}</p>
                          <p class="newsRed">阅读{{item.count}} <span>{{item.createTime}}</span></p>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <div class ="ThreeImgItem" v-else >
+                <div class ="ThreeImgItem" v-else   @click="goDetail(item)">
                      <p class="threetitle">{{item.title}}</p>
                      <div class="threeImgDiv">
                          <img :src ="item.image[0]" />
@@ -46,133 +46,142 @@
 import {
   getNewsTabTitleInfo,
   getNewsListByThemeId
-} from './../api/productApi.js'
+} from "./../api/productApi.js";
 export default {
   components: {},
   data() {
     return {
       headList: [],
-      selectedTabID: '',
+      selectedTabID: "",
       page: 0,
       size: 10, //默认加载10条
       listData: [],
       noData: false, //是都显示底部提示的bool值
       isInfinite: true
-    }
+    };
   },
-  mounted() {
-    let params = {
-      thematicId: this.selectedTabID,
-      page: this.page,
-      size: this.size
-    }
-    this.getRealListByThemIDData(params)
-  },
+  mounted() {},
   methods: {
     tebItemClick(item, index) {
-      this.selectedTabID = item.id
-      this.page = 0
+      this.selectedTabID = item.id;
+      this.page = 0;
       let params = {
         thematicId: this.selectedTabID,
         page: this.page,
         size: this.size
-      }
-      this.getRealListByThemIDData(params)
+      };
+      this.getRealListByThemIDData(params);
     },
     getRealListByThemIDData(params) {
       getNewsListByThemeId(params, res => {
-        if (res.status == '200') {
+        if (res.status == "200") {
           //点击某个标签之后重新加载的新数据
-          this.listData = [] //置空数组信息
-          this.page += 1
-          let dataContent = res.data.data.rows
-          this.listData = dataContent
+          this.listData = []; //置空数组信息
+          this.page += 1;
+          let dataContent = res.data.data.rows;
+          this.listData = dataContent;
           if (dataContent.length >= this.size) {
             //数据大于10条  需要加载更多
-            this.isInfinite = true
-            this.noData = false
+            this.isInfinite = true;
+            this.noData = false;
           } else {
-            this.isInfinite = false
-            this.noData = true
+            this.isInfinite = false;
+            this.noData = true;
           }
         } else {
-          this.$vux.toast.text('请求失败')
+          this.$vux.toast.text("请求失败");
         }
-      })
+      });
     },
     infinite(done) {
       if (!this.isInfinite) {
         //数据少于10条  isInfinite为false 不需要加载更多
-        this.page = 0
-        done(true)
-        return
+        this.page = 0;
+        done(true);
+        return;
       }
       setTimeout(() => {
         let params = {
           thematicId: this.selectedTabID,
           page: this.page,
           size: this.size
-        }
+        };
         getNewsListByThemeId(params, res => {
-          if (res.status == '200') {
-            this.page += 1
-            let dataContent = res.data.data.rows
-            this.listData = this.listData.concat(dataContent) //新数据 拼接到之前的数据中
+          if (res.status == "200") {
+            this.page += 1;
+            let dataContent = res.data.data.rows;
+            this.listData = this.listData.concat(dataContent); //新数据 拼接到之前的数据中
             if (dataContent.length >= this.size) {
-              this.isInfinite = true
-              done(false)
-              this.noData = false
+              this.isInfinite = true;
+              done(false);
+              this.noData = false;
             } else {
-              this.isInfinite = false
-              done(true)
-              this.noData = true
+              this.isInfinite = false;
+              done(true);
+              this.noData = true;
             }
           } else {
-            this.$vux.toast.text('请求失败')
+            this.$vux.toast.text("请求失败");
           }
-        })
-      }, 500)
+        });
+      }, 500);
     },
     refresh(done) {
-      this.page = 0
+      this.page = 0;
       let params = {
         thematicId: this.selectedTabID,
         page: this.page,
         size: this.size
-      }
+      };
 
       setTimeout(() => {
         getNewsListByThemeId(params, res => {
-          if (res.status == '200') {
-            this.listData = [] //刷新置空数组
-            this.page += 1
-            let dataContent = res.data.data.rows
-            this.listData = dataContent
+          if (res.status == "200") {
+            this.listData = []; //刷新置空数组
+            this.page += 1;
+            let dataContent = res.data.data.rows;
+            this.listData = dataContent;
             if (dataContent.length >= this.size) {
               //数据大于10条  需要加载更多
-              this.isInfinite = true
-              done(false)
-              this.noData = false
+              this.isInfinite = true;
+              done(false);
+              this.noData = false;
             } else {
-              done(true)
-              this.isInfinite = false
-              this.noData = true
+              done(true);
+              this.isInfinite = false;
+              this.noData = true;
             }
           } else {
-            this.$vux.toast.text('请求失败')
+            this.$vux.toast.text("请求失败");
           }
-        })
-      }, 500) //定时器  下来刷新的时间
+        });
+      }, 500); //定时器  下来刷新的时间
+    },
+    goDetail(item) {
+      this.$router.push({
+        path: "/news/newsDetail",
+        query: {
+          themId: item.themId,
+          infoId: item.infoId
+        }
+      });
     }
   },
   created() {
     //初始加载标题数据
     getNewsTabTitleInfo(null, res => {
-      if (res.status == '200') {
-        ;(this.headList = res.data.data),
-          (this.selectedTabID = res.data.data[0].id)
+      if (res.status == "200") {
+        (this.headList = res.data.data),
+          (this.selectedTabID = res.data.data[0].id);
+        //获取到标题后再请求新闻列表 保证第一次有 thematicId 
+        let params = {
+          thematicId: this.selectedTabID,
+          page: this.page,
+          size: this.size
+        };
+        this.getRealListByThemIDData(params);
       }
-    })
+    });
   }
 
   //    beforeRouteEnter(to,from,next){
@@ -193,7 +202,7 @@ export default {
   //           sessionStorage.askPositon = this.$refs.scrollerBottom && this.$refs.scrollerBottom.getPosition() && this.$refs.scrollerBottom.getPosition().top;
   //           next()
   //       },
-}
+};
 </script>
 
 <style scoped lang="stylus"  type="text/stylus" rel="stylesheet/stylus" >

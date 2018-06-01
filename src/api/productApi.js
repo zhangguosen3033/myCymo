@@ -62,6 +62,37 @@ export function getNewsTabTitleInfo(params, callback) {
 export function getNewsListByThemeId(params, callback) {
   getAxios(pandoraBaseUrl + '/apinoauth/v2/getInfoList', params, callback, 'get')
 };
+//获取新闻详情
+export function getInfoDetail(params, callback) {
+    getAxios(nireusBaseUrl + '/apiwithout/v1/getInfoDetail', params, callback, 'get')
+};
+
+//获取相关新闻
+export function getRelevantNewsById(params, callback) {
+    getAxios(pandoraBaseUrl + '/apinoauth/v2/getRelevantInfoList', params, callback, 'get')
+};
+
+//获取资讯评论
+export function getComments(params, callback) {
+    getAxios(pandoraBaseUrl + '/apinoauth/v1/getComments', params, callback, 'get')
+};
+
+//增加评论
+export function addComments(params, callback) {
+    getAxios(pandoraBaseUrl + '/api/v2/addComments', params, callback, 'post')
+};
+
+//收藏取消收藏
+export function toggleCollectInfo(isCollected, params, callback) {
+    if (!isCollected) {
+        //收藏
+        getAxios(nireusBaseUrl + '/api/v1/addInfoCollect', params, callback, 'post')
+    } else {
+        //取消收藏
+        getAxios(nireusBaseUrl + '/api/v1/removeInfoCollect', params, callback, 'post')
+    }
+};
+
 
 
 

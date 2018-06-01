@@ -10,7 +10,7 @@ import productData from '@/views/product/productData'
 import caseData from '@/views/product/caseData'
 import login from '@/views/login/login'
 import loginCode from '@/views/login/loginCode'
-
+import newsDetail from '@/views/news/newsDetail'
 
 
 
@@ -53,11 +53,16 @@ export default new Router({
         {
             path: '/login/login',
             component: login,
-        } ,
+        },
         {
             path: '/login/loginCode',
             component: loginCode,
+        },
+        {
+            path: '/news/newsDetail',
+            component: newsDetail,
         }
+
 
     ]
 })

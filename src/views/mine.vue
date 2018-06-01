@@ -34,86 +34,106 @@
     </div>
  </div>
 
- <div class="listDIv">
-   <ul >
-       <li class="list">
-           <p>我的银行卡</p>
-           <img src = "../assets/images/arrow_right@2x.png"/>
-       </li>
-        <li class="list">
-           <p>支付账单</p>
-           <img src = "../assets/images/arrow_right@2x.png" />
-       </li>
-       <li class="list">
-           <p>个人资料</p>
-           <img src = "../assets/images/arrow_right@2x.png" />
-       </li>
-       <li class="list">
-           <p>智能客服</p>
-           <img src = "../assets/images/arrow_right@2x.png" />
-       </li>
-   </ul>
-   </div>
+<!-- 利用cell组件 显示信息 -->
+<cell :cellData='myBankCard' :isLogined='isLogined'></cell>
+<cell :cellData='payBill' :tel='tel' :isLogined='isLogined'></cell>
+<cell :cellData='personInfo' :isLogined='isLogined'></cell>
+<cell :cellData='hr' :isLogined='isLogined'></cell>
+<cell :cellData='myCollect' :isLogined='isLogined'></cell>
+<cell :cellData='invite' :isLogined='isLogined'></cell>
+<cell :cellData='applyRecord ' :isLogined='isLogined'></cell>
+
 </div>
 
 </template>
 <script>
-import { getUserInfo } from './../api/productApi.js'
+import { getUserInfo } from "./../api/productApi.js";
+import cell from "../components/mine/cell.vue";
 export default {
-  components: {},
+  components: {
+    cell
+  },
   data() {
     return {
-        isLogined:false,
-        headIcon:'../assets/images/my_pic@2x.png',
-        userName:'立即登录'
+      isLogined: false,
+      headIcon: "../assets/images/my_pic@2x.png",
+      userName: "立即登录",
+      tel: "",
+      myBankCard: {
+        text: "我的银行卡",
+        path: "/myCard/cardList"
+      },
+      payBill: {
+        text: "支付账单",
+        path: "/payBill/payBillList"
+      },
+      personInfo: {
+        text: "个人资料",
+        path: "/personal/personalInfo"
+      },
+      myCollect: {
+        text: "我的收藏",
+        path: "/collection/collection"
+      },
+      invite: {
+        text: "邀请注册",
+        path: "/invitation/invitation"
+      },
+      applyRecord: {
+        text: "申请记录",
+        path: "/myloan/recordItem"
+      },
+      hr: {
+        text: "智能客服",
+        path: "/setting/serviceRobot"
+      }
     };
   },
   mounted() {},
   created() {
-       this.isLogined = localStorage.getItem("userToken") ? true : false;
-        if (this.isLogined) {
-            console.log('已经登陆过')
-			this.getUserInfoFuc();
-		}else {
-        }
+    this.isLogined = localStorage.getItem("userToken") ? true : false;
+    if (this.isLogined) {
+      //   console.log("已经登陆过");
+      this.getUserInfoFuc();
+    } else {
+    }
   },
-  activated(){
-        // this.isLogined = localStorage.getItem("userToken") ? true : false;
-        // if (this.isLogined) {
-        //     console.log('已经登陆过')
-		// 	this.getUserInfoFuc();
-		// }else {
-        // }
-    },
   methods: {
-        getUserInfoFuc() {
-            getUserInfo(null, res => {
-                            if(res.status == 200){
-                                if (res.data.result == 0) {
-                                    let dataContent = res.data.data;
-                                    var transformName = '';
-                                    if(dataContent.name){
-                                        var transformName = dataContent.name;
-                                    }
+    getUserInfoFuc() {
+      getUserInfo(null, res => {
+        if (res.status == 200) {
+          if (res.data.result == 0) {
+            let dataContent = res.data.data;
+            var transformName = "";
+            if (dataContent.name) {
+              var transformName = dataContent.name;
+            }
             //	                    let transformPhone = dataContent.telephone;
-                                    this.userName = transformName || '亲爱的用户';
-                                    localStorage.setItem('userNameLocal', dataContent.name);
+            this.userName = transformName || "亲爱的用户";
+            localStorage.setItem("userNameLocal", dataContent.name);
 
-                                    // //加载其他信息
-                                    // this.userPhone = dataContent.telephone;
-                                    // this.tel = dataContent.telephone;
-                                    this.headIcon = dataContent.portrait || "../assets/images/my_pic@2x.png";
-                                    // this.getLoanInfoData();
-                                }else{
-                                    this.$vux.toast.text(res.data.message);
-                                }
-                            }
-                        });
-      },
-    goLogin() {
-      this.$router.push({
-        path: "/login/login"
+            // //加载其他信息
+            // this.userPhone = dataContent.telephone;
+            this.tel = dataContent.telephone;
+            this.headIcon =
+              dataContent.portrait || "../assets/images/my_pic@2x.png";
+            // this.getLoanInfoData();
+          } else {
+            this.$vux.toast.text(res.data.message);
+          }
+        }
       });
+    },
+    goLogin() {
+      this.isLogined = localStorage.getItem("userToken") ? true : false;
+      if (this.isLogined) {
+        //设置界面
+      } else {
+        //未登陆
+        this.$router.push({
+          path: "/login/login"
+        });
+      }
     }
   }
 };
@@ -123,6 +143,7 @@ export default {
 
 .content {
     background-color: #fff;
+    overflow hidden
 
     .headDiv {
         z-index: 100;
@@ -181,7 +202,7 @@ export default {
 
                     .headIcon {
                         margin: auto;
-                        border-radius 50%
+                        border-radius: 50%;
                         width: px2rem(125);
                         height: px2rem(125);
                     }
@@ -209,34 +230,6 @@ export default {
                     color: #282828;
                     margin-top: px2rem(20);
                 }
-            }
-        }
-    }
-
-    .listDIv {
-        width: 100%;
-        border-top: solid #f0f0f0 px2rem(2);
-
-        .list {
-            width: 100%;
-            height: px2rem(120);
-            border-bottom: solid #f0f0f0 px2rem(1);
-
-            p {
-                position: absolute;
-                margin-top: px2rem(40);
-                font-size: px2rem(30);
-                font-weight: bolder;
-                text-align: left;
-                margin-left: px2rem(30);
-            }
-
-            img {
-                float: right;
-                margin-top: px2rem(40);
-                margin-right: px2rem(30);
-                width: px2rem(17);
-                height: px2rem(31);
             }
         }
     }
