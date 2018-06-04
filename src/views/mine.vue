@@ -147,23 +147,24 @@ export default {
 
 .content {
     background-color: #fff;
-    overflow: hidden;
+    // overflow: hidden;
 
     .headDiv {
-        z-index: 100;
+        // z-index: 100;
         width: 100%;
         height: px2rem(450);
         bg-image('../assets/images/has_sign_back');
-        background-size: 100% 100%;
+        background-size: 100% px2rem(450);   //根据图片的实际大小去调节
 
         .headBox {
+            box-sizing border-box
             position: relative;
-            padding: px2rem(100) px2rem(50) px2rem(40) px2rem(30);
-            height: px2rem(161);
+            padding : px2rem(100) px2rem(50) px2rem(40) px2rem(50);
+
+            height: px2rem(300);
 
             .leftBox {
-                padding: 0 px2rem(300) 0 0;
-                height: 100%;
+                height: px2rem(160);
 
                 .login {
                     padding-top: px2rem(20);
@@ -187,7 +188,7 @@ export default {
                 position: absolute;
                 top: px2rem(100);
                 right: px2rem(50);
-                padding: 0 px2rem(50) 0 px2rem(200);
+                // padding: 0 0 0 px2rem(200);
                 height: px2rem(160);
 
                 .rightIcon {
