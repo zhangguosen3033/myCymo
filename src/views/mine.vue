@@ -2,6 +2,7 @@
 
 <div class="content">
  <div class="headDiv">
+     <span class="settingIcon" @click="goSetting()"></span>
      <div class="headBox">
         <div class="leftBox" @click="goLogin()">
             <p class="login">{{userName}}</p>
@@ -129,9 +130,20 @@ export default {
       });
     },
     goLogin() {
-      this.isLogined = localStorage.getItem("userToken") ? true : false;
       if (this.isLogined) {
         //设置界面
+      } else {
+        //未登陆
+        this.$router.push({
+          path: "/login/login"
+        });
+      }
+    },
+    goSetting() {
+      if (this.isLogined) {
+        this.$router.push({
+          path: "/mine/setting"
+        });
       } else {
         //未登陆
         this.$router.push({
@@ -147,20 +159,32 @@ export default {
 
 .content {
     background-color: #fff;
-    // overflow: hidden;
 
+    // overflow: hidden;
     .headDiv {
-        // z-index: 100;
+        position: relative;
+        z-index: 1000;
         width: 100%;
-        height: px2rem(450);
+        height: px2rem(460);
         bg-image('../assets/images/has_sign_back');
-        background-size: 100% px2rem(450);   //根据图片的实际大小去调节
+        background-size: 100% 100%; // 根据图片的实际大小去调节
+        background-position: center top;
+
+        .settingIcon {
+            position: absolute;
+            z-index: 1001;
+            top: px2rem(30);
+            right: px2rem(30);
+            width: px2rem(40);
+            height: px2rem(40);
+            bg-image('../assets/images/set_icon2');
+            background-size: 100% 100%; // 根据图片的实际大小去调节
+        }
 
         .headBox {
-            box-sizing border-box
+            box-sizing: border-box;
             position: relative;
-            padding : px2rem(100) px2rem(50) px2rem(40) px2rem(50);
-
+            padding: px2rem(100) px2rem(50) px2rem(40) px2rem(50);
             height: px2rem(300);
 
             .leftBox {

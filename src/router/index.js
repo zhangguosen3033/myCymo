@@ -11,6 +11,9 @@ import caseData from '@/views/product/caseData'
 import login from '@/views/login/login'
 import loginCode from '@/views/login/loginCode'
 import newsDetail from '@/views/news/newsDetail'
+import setting from '@/views/mine/setting'
+import question from '@/views/mine/question'
+
 
 
 
@@ -61,6 +64,14 @@ export default new Router({
         {
             path: '/news/newsDetail',
             component: newsDetail,
+        },
+        {
+            path: '/mine/setting',
+            component: setting,
+        },
+        {
+            path: '/mine/question',
+            component: question,
         }
 
 
