@@ -13,6 +13,8 @@ import loginCode from '@/views/login/loginCode'
 import newsDetail from '@/views/news/newsDetail'
 import setting from '@/views/mine/setting'
 import question from '@/views/mine/question'
+import qrCode from '@/views/mine/qrCode'
+
 
 
 
@@ -72,7 +74,11 @@ export default new Router({
         {
             path: '/mine/question',
             component: question,
-        }
+        },
+       {
+           path: '/mine/qrCode',
+           component: qrCode,
+       }
 
 
     ]

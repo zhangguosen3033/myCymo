@@ -82,7 +82,7 @@ export default {
       },
       invite: {
         text: "邀请注册",
-        path: "/invitation/invitation"
+        path: "/mine/qrCode"
       },
       applyRecord: {
         text: "申请记录",
